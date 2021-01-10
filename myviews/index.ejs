@@ -1,0 +1,41 @@
+<html lang="ru">
+
+    <%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+
+    <h1> <%= title %> </h1>
+
+    <div class="blog content">
+        <h2> All blogs </h2>
+
+        <%= blogs.length  %>
+        <hr>
+        
+        
+        <% if (blogs.length > 0) { %>
+            
+            <% blogs.forEach(blog => {%>
+                <hr>
+                <h3> <%= blog.title %> </h3>
+                <p> <%= blog.snippet %> </p>
+                
+            <%  } )  %>
+
+
+        <% } %>
+
+
+
+
+        <%= blogs[0].title %>
+
+
+    </div>
+
+</body>
+</html>
+
+
+
