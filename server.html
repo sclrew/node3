@@ -1,55 +1,57 @@
-const http = require('http')
-const fs = require('fs')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anapa Blog | <%= title %>  </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
 
-const server = http.createServer((req,res) => {
+        body{
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            font-family: 'Noto Serif', serif;
+        }
 
-    console.log('request made')
-    console.log(req.url, req.method)
+        p, h1, h2, h3, a, ul {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            color: #222;
+        }
 
-    // res.setHeader('Content-type', 'text/plain')
-    res.setHeader('Content-type', 'text/html')
-    // res.write('<h1>we live in Russia</h1>')
-    // res.end()
+       nav {
+           display: flex;
+           justify-content: space-between;
+           margin-bottom: 60px;
+           padding-bottom: 10px;
+           border-bottom: 1px solid #ddd;
+            text-transform: uppercase;
+       } 
 
-    let path = './views/';
-
-    switch(req.url){
-        case '/':
-            path+= 'index.html'
-            res.statusCode = 200
-            break;
-        case '/about':
-            path += 'about.html'
-            res.statusCode = 200
-            break;
-        case '/about-me':           
-            res.statusCode = 301
-            res.setHeader('Location', '/about')
-            res.end()
-            break;
-        default:
-            path += '404.html'
-            res.statusCode = 404
-            break;
-    }
-
-
-    // fs.readFile('./views/index.html', (err, data) =>{
-    fs.readFile(path, (err, data) =>{
-        if (err) {
-           console.log(err)
-           res.end()
-       } else {
-           res.write(data)
-           res.end()
-        //    res.statusCode = 200
+       nav ul {
+           display: flex;
+           justify-content: space-between;
+           align-items: flex-end;
        }
-    })
+
+        nav li {
+            list-style: none;
+            margin-left: 20px;
+        }
+        nav h1 {
+            font-size: 3em;
+        }
+        nav p, nav a {
+            color: #777;
+            font-weight: 300;
+        }
+        footer{
+            color: #777;
+            text-align: center;
+            margin: 80px auto 20px;
+        }
 
 
+    </style>
 
-})
-
-server.listen(3000, 'localhost', () => {
-    console.log(' listening for request on port 3000 ')
-})
+</head>
